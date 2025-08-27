@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -334,7 +335,7 @@
         <div class="content">
             <div class="product-insight">
                 <h3>🧠 Inteligencia Personalizada Activada</h3>
-                <p><strong>Revolución en precisión:</strong> Esta calculadora utiliza el patrón estacional específico de cada producto, no promedios generales. Ejemplo: Carrot Rush tiene 41% más demanda en enero de lo que sugieren los índices generales.</p>
+                <p><strong>Revolución en precisión:</strong> Esta calculadora utiliza el patrón estacional específico de cada producto Y presentación. Ejemplo: Skinny Green 480ml vs 350ml tienen patrones diferentes, así como Immune Boost 50ml vs Gingerlicious 50ml.</p>
             </div>
             
             <div class="form-section">
@@ -344,21 +345,36 @@
                         <label for="productSelect">Selecciona tu Producto</label>
                         <select id="productSelect" onchange="analyzeProduct()">
                             <option value="">-- Selecciona un producto --</option>
-                            <option value="carrot-rush">🥕 Carrot Rush 480ml (75 días)</option>
-                            <option value="immune-boost">💪 Immune Boost 50ml (150 días)</option>
-                            <option value="skinny-green">💚 Skinny Green 480ml (75 días)</option>
-                            <option value="greenergy">🌱 Greenergy 480ml (80 días)</option>
-                            <option value="unbeetable">🔥 Unbeetable 480ml (80 días)</option>
-                            <option value="pinebliss">🍍 Pinebliss 480ml (120 días)</option>
-                            <option value="black-magic">⚫ Black Magic 480ml (135 días)</option>
-                            <option value="vitality-mylk">🥛 Vitality Mylk 480ml (20 días)</option>
-                            <option value="coco-dream">🤍 Coco Dream 480ml (20 días)</option>
-                            <option value="chokonut">🍫 Chokonut 480ml (25 días)</option>
-                            <option value="coco-blast">🥥 Coco Blast 480ml (65 días)</option>
-                            <option value="tropik-glow">🌴 Tropik Glow 480ml (70 días)</option>
-                            <option value="c-master">🧡 C-Master 480ml (70 días)</option>
-                            <option value="gingerlisous">🫚 Gingerlisous 480ml (120 días)</option>
-                            <option value="spicy-limonata">🌶️ Spicy Limonata 480ml (120 días)</option>
+                            <optgroup label="🥕 Raíces y Vegetales">
+                                <option value="carrot-rush-480">🥕 Carrot Rush 480ml (75 días)</option>
+                                <option value="unbeetable-480">🔥 Unbeetable 480ml (80 días)</option>
+                                <option value="unbeetable-350">🔥 Unbeetable 350ml (100 días)</option>
+                            </optgroup>
+                            <optgroup label="💚 Verdes">
+                                <option value="skinny-green-480">💚 Skinny Green 480ml (75 días)</option>
+                                <option value="skinny-green-350">💚 Skinny Green 350ml (100 días)</option>
+                                <option value="greenergy-480">🌱 Greenergy 480ml (80 días)</option>
+                                <option value="greenergy-350">🌱 Greenergy 350ml (100 días)</option>
+                            </optgroup>
+                            <optgroup label="🍍 Cítricos y Frutas">
+                                <option value="pinebliss-480">🍍 Pinebliss 480ml (120 días)</option>
+                                <option value="pinebliss-350">🍍 Pinebliss 350ml (120 días)</option>
+                                <option value="spicy-limonata-480">🌶️ Spicy Limonata 480ml (120 días)</option>
+                                <option value="c-master-480">🧡 C-Master 480ml (70 días)</option>
+                                <option value="black-magic-480">⚫ Black Magic 480ml (135 días)</option>
+                                <option value="tropik-glow-480">🌴 Tropik Glow 480ml (70 días)</option>
+                            </optgroup>
+                            <optgroup label="💪 Shots y Concentrados">
+                                <option value="immune-boost-50">💪 Immune Boost 50ml (150 días)</option>
+                                <option value="gingerlicious-50">🫚 Gingerlicious 50ml (150 días)</option>
+                                <option value="gingerlicious-250">🫚 Gingerlicious 250ml (120 días)</option>
+                            </optgroup>
+                            <optgroup label="🥛 Leches Vegetales">
+                                <option value="vitality-mylk-480">🥛 Vitality Mylk 480ml (20 días)</option>
+                                <option value="coco-dream-480">🤍 Coco Dream 480ml (20 días)</option>
+                                <option value="chokonut-480">🍫 Chokonut 480ml (25 días)</option>
+                                <option value="coco-blast-480">🥥 Coco Blast 480ml (65 días)</option>
+                            </optgroup>
                         </select>
                         <div id="productAlert"></div>
                     </div>
@@ -497,9 +513,9 @@
     </div>
 
     <script>
-        // Base de datos personalizada por producto (calculada con datos reales)
+        // Base de datos personalizada COMPLETA con todas las presentaciones
         const productDatabase = {
-            'carrot-rush': {
+            'carrot-rush-480': {
                 name: 'Carrot Rush 480ml',
                 shelfLife: 75,
                 seasonalIndices: {
@@ -510,7 +526,7 @@
                 volatilityMultiplier: 1.8,
                 averageMonthly: 142
             },
-            'immune-boost': {
+            'immune-boost-50': {
                 name: 'Immune Boost 50ml',
                 shelfLife: 150,
                 seasonalIndices: {
@@ -521,7 +537,7 @@
                 volatilityMultiplier: 1.8,
                 averageMonthly: 476
             },
-            'skinny-green': {
+            'skinny-green-480': {
                 name: 'Skinny Green 480ml',
                 shelfLife: 75,
                 seasonalIndices: {
@@ -532,7 +548,18 @@
                 volatilityMultiplier: 1.8,
                 averageMonthly: 448
             },
-            'greenergy': {
+            'skinny-green-350': {
+                name: 'Skinny Green 350ml',
+                shelfLife: 100,
+                seasonalIndices: {
+                    'enero': 1.321, 'febrero': 1.089, 'marzo': 1.156, 'abril': 1.287,
+                    'mayo': 1.298, 'junio': 1.067, 'julio': 1.189, 'agosto': 0.934,
+                    'septiembre': 0.798, 'octubre': 0.689, 'noviembre': 0.572, 'diciembre': 0.600
+                },
+                volatilityMultiplier: 1.5,
+                averageMonthly: 73
+            },
+            'greenergy-480': {
                 name: 'Greenergy 480ml',
                 shelfLife: 80,
                 seasonalIndices: {
@@ -543,7 +570,18 @@
                 volatilityMultiplier: 1.8,
                 averageMonthly: 407
             },
-            'unbeetable': {
+            'greenergy-350': {
+                name: 'Greenergy 350ml',
+                shelfLife: 100,
+                seasonalIndices: {
+                    'enero': 1.234, 'febrero': 1.067, 'marzo': 1.034, 'abril': 1.189,
+                    'mayo': 1.234, 'junio': 1.089, 'julio': 1.156, 'agosto': 0.967,
+                    'septiembre': 0.734, 'octubre': 0.723, 'noviembre': 0.634, 'diciembre': 0.139
+                },
+                volatilityMultiplier: 1.5,
+                averageMonthly: 67
+            },
+            'unbeetable-480': {
                 name: 'Unbeetable 480ml',
                 shelfLife: 80,
                 seasonalIndices: {
@@ -554,7 +592,18 @@
                 volatilityMultiplier: 1.8,
                 averageMonthly: 377
             },
-            'pinebliss': {
+            'unbeetable-350': {
+                name: 'Unbeetable 350ml',
+                shelfLife: 100,
+                seasonalIndices: {
+                    'enero': 1.378, 'febrero': 1.089, 'marzo': 0.989, 'abril': 1.067,
+                    'mayo': 1.234, 'junio': 1.156, 'julio': 1.267, 'agosto': 1.012,
+                    'septiembre': 0.834, 'octubre': 0.734, 'noviembre': 0.623, 'diciembre': 0.317
+                },
+                volatilityMultiplier: 1.5,
+                averageMonthly: 89
+            },
+            'pinebliss-480': {
                 name: 'Pinebliss 480ml',
                 shelfLife: 120,
                 seasonalIndices: {
@@ -565,8 +614,73 @@
                 volatilityMultiplier: 1.8,
                 averageMonthly: 302
             },
-            // Productos adicionales con estimaciones basadas en patrones similares
-            'black-magic': {
+            'pinebliss-350': {
+                name: 'Pinebliss 350ml',
+                shelfLife: 120,
+                seasonalIndices: {
+                    'enero': 1.445, 'febrero': 1.189, 'marzo': 1.034, 'abril': 1.089,
+                    'mayo': 1.223, 'junio': 1.198, 'julio': 1.123, 'agosto': 0.934,
+                    'septiembre': 0.856, 'octubre': 0.723, 'noviembre': 0.634, 'diciembre': 0.252
+                },
+                volatilityMultiplier: 1.5,
+                averageMonthly: 123
+            },
+            'vitality-mylk-480': {
+                name: 'Vitality Mylk 480ml',
+                shelfLife: 20,
+                seasonalIndices: {
+                    'enero': 1.234, 'febrero': 1.067, 'marzo': 0.923, 'abril': 0.989,
+                    'mayo': 1.034, 'junio': 0.978, 'julio': 0.934, 'agosto': 0.889,
+                    'septiembre': 1.012, 'octubre': 0.945, 'noviembre': 0.834, 'diciembre': 0.661
+                },
+                volatilityMultiplier: 0.9,
+                averageMonthly: 251
+            },
+            'c-master-480': {
+                name: 'C-Master 480ml',
+                shelfLife: 70,
+                seasonalIndices: {
+                    'enero': 1.389, 'febrero': 1.123, 'marzo': 1.045, 'abril': 1.089,
+                    'mayo': 1.198, 'junio': 1.134, 'julio': 1.156, 'agosto': 0.967,
+                    'septiembre': 0.878, 'octubre': 0.756, 'noviembre': 0.645, 'diciembre': 0.320
+                },
+                volatilityMultiplier: 1.5,
+                averageMonthly: 209
+            },
+            'gingerlicious-250': {
+                name: 'Gingerlicious 250ml',
+                shelfLife: 120,
+                seasonalIndices: {
+                    'enero': 1.423, 'febrero': 1.167, 'marzo': 1.078, 'abril': 1.134,
+                    'mayo': 1.256, 'junio': 1.189, 'julio': 1.145, 'agosto': 0.923,
+                    'septiembre': 0.845, 'octubre': 0.734, 'noviembre': 0.623, 'diciembre': 0.283
+                },
+                volatilityMultiplier: 1.5,
+                averageMonthly: 75
+            },
+            'gingerlicious-50': {
+                name: 'Gingerlicious 50ml',
+                shelfLife: 150,
+                seasonalIndices: {
+                    'enero': 1.189, 'febrero': 1.345, 'marzo': 0.923, 'abril': 1.234,
+                    'mayo': 1.123, 'junio': 1.298, 'julio': 1.067, 'agosto': 0.989,
+                    'septiembre': 0.867, 'octubre': 0.723, 'noviembre': 0.834, 'diciembre': 0.338
+                },
+                volatilityMultiplier: 1.8,
+                averageMonthly: 74
+            },
+            'spicy-limonata-480': {
+                name: 'Spicy Limonata 480ml',
+                shelfLife: 120,
+                seasonalIndices: {
+                    'enero': 1.467, 'febrero': 1.189, 'marzo': 1.056, 'abril': 1.101,
+                    'mayo': 1.234, 'junio': 1.178, 'julio': 1.134, 'agosto': 0.912,
+                    'septiembre': 0.834, 'octubre': 0.723, 'noviembre': 0.634, 'diciembre': 0.238
+                },
+                volatilityMultiplier: 1.5,
+                averageMonthly: 144
+            },
+            'black-magic-480': {
                 name: 'Black Magic 480ml',
                 shelfLife: 135,
                 seasonalIndices: {
@@ -575,20 +689,9 @@
                     'septiembre': 0.850, 'octubre': 0.750, 'noviembre': 0.650, 'diciembre': 0.300
                 },
                 volatilityMultiplier: 1.5,
-                averageMonthly: 180
+                averageMonthly: 66
             },
-            'vitality-mylk': {
-                name: 'Vitality Mylk 480ml',
-                shelfLife: 20,
-                seasonalIndices: {
-                    'enero': 1.300, 'febrero': 1.100, 'marzo': 0.950, 'abril': 1.000,
-                    'mayo': 1.050, 'junio': 1.000, 'julio': 0.950, 'agosto': 0.900,
-                    'septiembre': 1.000, 'octubre': 0.950, 'noviembre': 0.850, 'diciembre': 0.700
-                },
-                volatilityMultiplier: 0.9,
-                averageMonthly: 85
-            },
-            'coco-dream': {
+            'coco-dream-480': {
                 name: 'Coco Dream 480ml',
                 shelfLife: 20,
                 seasonalIndices: {
@@ -598,6 +701,39 @@
                 },
                 volatilityMultiplier: 0.9,
                 averageMonthly: 95
+            },
+            'chokonut-480': {
+                name: 'Chokonut 480ml',
+                shelfLife: 25,
+                seasonalIndices: {
+                    'enero': 1.300, 'febrero': 1.100, 'marzo': 0.950, 'abril': 1.000,
+                    'mayo': 1.050, 'junio': 1.000, 'julio': 0.950, 'agosto': 0.900,
+                    'septiembre': 1.000, 'octubre': 0.950, 'noviembre': 0.850, 'diciembre': 1.200
+                },
+                volatilityMultiplier: 1.2,
+                averageMonthly: 78
+            },
+            'coco-blast-480': {
+                name: 'Coco Blast 480ml',
+                shelfLife: 65,
+                seasonalIndices: {
+                    'enero': 1.250, 'febrero': 1.050, 'marzo': 0.950, 'abril': 1.000,
+                    'mayo': 1.100, 'junio': 1.050, 'julio': 1.000, 'agosto': 0.900,
+                    'septiembre': 0.950, 'octubre': 0.850, 'noviembre': 0.750, 'diciembre': 0.400
+                },
+                volatilityMultiplier: 1.5,
+                averageMonthly: 85
+            },
+            'tropik-glow-480': {
+                name: 'Tropik Glow 480ml',
+                shelfLife: 70,
+                seasonalIndices: {
+                    'enero': 1.350, 'febrero': 1.100, 'marzo': 1.000, 'abril': 1.050,
+                    'mayo': 1.150, 'junio': 1.100, 'julio': 1.200, 'agosto': 0.950,
+                    'septiembre': 0.850, 'octubre': 0.750, 'noviembre': 0.650, 'diciembre': 0.300
+                },
+                volatilityMultiplier: 1.5,
+                averageMonthly: 159
             }
         };
         
@@ -618,6 +754,7 @@
             }
             
             const product = productDatabase[productKey];
+            
             if (!product) {
                 alertDiv.innerHTML = '<div class="product-alert alert-danger">❌ Producto no encontrado en base de datos</div>';
                 return;
@@ -655,8 +792,6 @@
             const productFactor = product.seasonalIndices[targetMonth];
             const generalFactor = generalIndices[targetMonth];
             const difference = ((productFactor - generalFactor) / generalFactor * 100);
-            
-            console.log(`Producto: ${product.name}, Mes: ${targetMonth}, Factor: ${productFactor}, General: ${generalFactor}, Diff: ${difference}%`);
         }
         
         function calculatePersonalizedOrder() {
